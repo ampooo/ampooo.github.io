@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>amp.ooo</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta name="description" content="amp.ooo — making things.">
+<meta property="og:title" content="amp.ooo">
+<meta property="og:description" content="making things.">
+<meta name="theme-color" content="#f5f4f0">
+<style>
+  :root {
+    --bg: #f5f4f0;
+    --fg: #111110;
+    --muted: #888780;
+    --faint: #c8c6be;
+    --font: 'Courier New', Courier, monospace;
+    --fs: 12px;
+    --pad: 2rem;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    font-family: var(--font);
+    font-size: var(--fs);
+    color: var(--fg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* ── PERSISTENT NAV ── */
+  #topbar {
+    flex-shrink: 0;
+    width: 100%;
+  }
+  #topbar-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.75rem var(--pad);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .logo {
+    font-size: var(--fs);
+    cursor: pointer;
+    flex-shrink: 0;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+    font-weight: normal;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav-links a {
+    font-size: var(--fs);
+    color: var(--muted);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s;
+    white-space: nowrap;
+    font-weight: normal;
+  }
+  .nav-links a:hover { color: var(--fg); }
+  .nav-links a.active {
+    color: var(--fg);
+    font-weight: bold;
+  }
+
+  /* ── CONTENT AREA ── */
+  #content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .view { display: none; flex: 1; flex-direction: column; }
+  .view.active { display: flex; }
+
+  .inner {
+    max-width: 680px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--pad);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--faint);
+    flex-shrink: 0;
+    margin-top: auto;
+  }
+
+  /* ── HOME ── */
+  .home-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .home-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .home-ooo {
+    font-size: var(--fs);
+    color: var(--faint);
+    line-height: 2;
+  }
+  .home-welcome {
+    font-size: var(--fs);
+    color: var(--fg);
+    margin: 0.6rem 0;
+  }
+
+  /* ── COMING SOON ── */
+  .coming-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .coming-label { font-size: 11px; color: var(--faint); letter-spacing: 0.08em; }
+  .coming-title { font-size: 13px; font-weight: bold; }
+
+  /* ── ABOUT ── */
+  .about-body { flex: 1; padding: 2rem 0; }
+  .about-section { max-width: 480px; }
+  .about-section h2 { font-size: 13px; font-weight: bold; margin-bottom: 2rem; }
+  .about-block { margin-bottom: 2.5rem; }
+  .about-label { font-size: 11px; color: var(--faint); margin-bottom: 0.5rem; letter-spacing: 0.06em; }
+  .about-text { font-size: var(--fs); color: var(--muted); line-height: 1.75; }
+  .about-text a { color: var(--fg); text-decoration: none; border-bottom: 0.5px solid var(--faint); }
+  .about-text a:hover { border-color: var(--fg); }
+  .about-links { display: flex; flex-direction: column; gap: 0.5rem; }
+  .about-links a { color: var(--muted); text-decoration: none; font-size: var(--fs); }
+  .about-links a:hover { color: var(--fg); }
+  .about-links a::before { content: '-> '; color: var(--faint); }
+
+  @media (max-width: 480px) {
+    :root { --pad: 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<script>
+const SITE_CONFIG = {
+  name: "amp.ooo",
+  year: "2026",
+
+  /* ---- ABOUT ------------------------------------------------
+     Edit any field freely. Add/remove objects in links[].
+  ------------------------------------------------------------ */
+  about: {
+    headline:  "making things.",
+    bio:       "i build personal projects — hardware, software, and whatever else i get curious about. this site is a log of that.",
+    currently: "working on a diy midi audio mixer and a long-running car project.",
+    location:  "somewhere with a workbench.",
+    links: [
+	{ label: "linkedin",  url: "www.linkedin.com/in/alexander-petrick-b56408299/?skipRedirect=true"   },
+	{ label: "email",   url: "mailto:alex@amp.ooo" },
+	{ label: " ", url: " "  },
+    ]
+  },
+};
+</script>
+
+<!-- PERSISTENT TOP BAR -->
+<div id="topbar">
+  <div id="topbar-inner">
+    <span class="logo" data-goto="home" id="site-logo"></span>
+    <div class="nav-links">
+      <a data-goto="projects">projects</a>
+      <a data-goto="writing">writing</a>
+      <a data-goto="about">about</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT SWAP AREA -->
+<div id="content">
+
+  <!-- HOME -->
+  <div id="view-home" class="view active">
+    <div class="inner">
+      <div class="home-body">
+        <div class="home-center">
+          <p class="home-ooo">ooo &nbsp; ooo &nbsp; ooo</p>
+          <p class="home-ooo">ooo &nbsp; ooo &nbsp; ooo</p>
+          <p class="home-welcome">welcome to amp.ooo</p>
+          <p class="home-ooo">ooo &nbsp; ooo &nbsp; ooo</p>
+          <p class="home-ooo">ooo &nbsp; ooo &nbsp; ooo</p>
+        </div>
+      </div>
+      <footer><span class="f-name"></span><span class="f-year"></span></footer>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="view-projects" class="view">
+    <div class="inner">
+      <div class="coming-body">
+        <p class="coming-label">projects</p>
+        <p class="coming-title">coming soon.</p>
+      </div>
+      <footer><span class="f-name"></span><span class="f-year"></span></footer>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div id="view-writing" class="view">
+    <div class="inner">
+      <div class="coming-body">
+        <p class="coming-label">writing</p>
+        <p class="coming-title">coming soon.</p>
+      </div>
+      <footer><span class="f-name"></span><span class="f-year"></span></footer>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="view-about" class="view">
+    <div class="inner">
+      <div class="about-body">
+        <div class="about-section" id="about-content"></div>
+      </div>
+      <footer><span class="f-name"></span><span class="f-year"></span></footer>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const $  = id  => document.getElementById(id);
+const $$ = sel => document.querySelectorAll(sel);
+
+function showView(name) {
+  $$('.view').forEach(v => v.classList.remove('active'));
+  const el = $('view-' + name);
+  if (el) el.classList.add('active');
+  window.scrollTo(0, 0);
+  $$('.nav-links a').forEach(a =>
+    a.classList.toggle('active', a.dataset.goto === name)
+  );
+}
+
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-goto]');
+  if (!t) return;
+  showView(t.dataset.goto);
+});
+
+function stampIdentity() {
+  $('site-logo').textContent = SITE_CONFIG.name;
+  $$('.f-name').forEach(el => el.textContent = SITE_CONFIG.name);
+  $$('.f-year').forEach(el => el.textContent = SITE_CONFIG.year);
+}
+
+function buildAbout() {
+  const a = SITE_CONFIG.about;
+  $('about-content').innerHTML = `
+    <h2>${a.headline}</h2>
+    <div class="about-block">
+      <p class="about-label">bio</p>
+      <p class="about-text">${a.bio}</p>
+    </div>
+    <div class="about-block">
+      <p class="about-label">currently</p>
+      <p class="about-text">${a.currently}</p>
+    </div>
+    <div class="about-block">
+      <p class="about-label">location</p>
+      <p class="about-text">${a.location}</p>
+    </div>
+    <div class="about-block">
+      <p class="about-label">links</p>
+      <div class="about-links">
+        ${a.links.map(l => `<a href="${l.url}" target="_blank">${l.label}</a>`).join('')}
+      </div>
+    </div>
+  `;
+}
+
+stampIdentity();
+buildAbout();
+</script>
+</body>
+</html>
