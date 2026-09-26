@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>[ ao - 01 ] music. — amp.ooo</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/style.css">
+  <meta name="description" content="music.amp.ooo — a personal album ranking and cataloging site.">
+  <meta name="theme-color" content="#f5f4f0">
+  <style>
+    /* ── page-specific ── */
+    .proj-id {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.04em;
+    }
+    .proj-label {
+      font-size: 13px;
+      font-weight: bold;
+      color: var(--fg);
+      letter-spacing: -0.01em;
+    }
+    .proj-label span {
+      font-weight: normal;
+      color: var(--muted);
+    }
+    .proj-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+      gap: 1rem;
+    }
+    .proj-date {
+      font-size: 11px;
+      color: var(--faint);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .divider {
+      border: none;
+      border-top: 0.5px solid var(--faint);
+      margin: 1.5rem 0 2rem;
+    }
+    .stack-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.75rem;
+    }
+    .stack-list li {
+      font-size: var(--fs);
+      color: var(--fg);
+      line-height: 1.75;
+    }
+    .stack-list li::before {
+      content: '-> ';
+      color: var(--muted);
+    }
+    .section-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.75rem;
+    }
+    .feature-list li {
+      font-size: var(--fs);
+      color: var(--fg);
+      line-height: 1.75;
+    }
+    .feature-list li::before {
+      content: '— ';
+      color: var(--muted);
+    }
+    .ext-link {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 0.5px solid var(--muted);
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .ext-link:hover {
+      color: var(--fg);
+      border-color: var(--fg);
+    }
+
+    /* carousel */
+    .carousel { position: relative; width: 100%; margin-top: 2.5rem; }
+    .carousel-track-wrap { overflow: hidden; width: 100%; }
+    .carousel-track { display: flex; transition: transform 0.35s ease; }
+    .carousel-track img {
+      width: 100%;
+      flex-shrink: 0;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      background: var(--faint);
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.75rem;
+    }
+    .carousel-btn {
+      font-family: var(--font);
+      font-size: var(--fs);
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.15s;
+    }
+    .carousel-btn:hover { color: var(--fg); }
+    .carousel-btn:disabled { color: var(--faint); cursor: default; }
+    .carousel-count { font-size: 11px; color: var(--muted); }
+
+    .project-text {
+      font-size: var(--fs);
+      color: var(--fg);
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+    }
+    .project-photo {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      margin: 1.5rem 0;
+      background: var(--faint);
+    }
+    .project-gif {
+      width: 100%;
+      display: block;
+      margin-bottom: 2rem;
+      background: var(--faint);
+    }
+    .projects-body { flex: 1; padding: 1rem 0 2rem; }
+  </style>
+</head>
+<body>
+
+  <div id="topbar">
+    <div id="topbar-inner">
+      <a class="logo" href="/">amp.ooo</a>
+      <nav class="nav-links">
+        <a href="/projects/" class="active">projects</a>
+        <a href="/writing/">writing</a>
+        <a href="/about/">about</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <div class="inner">
+      <div class="projects-body">
+        <div class="project-entry">
+
+          <!-- HEADER -->
+          <div class="proj-header-row">
+            <div>
+              <p class="proj-id">[ ao - 01 ]</p>
+              <p class="proj-label">music<span>.</span></p>
+            </div>
+            <p class="proj-date">2026</p>
+          </div>
+
+          <hr class="divider">
+
+          <!--
+            STEP — add a gif of the site here when you have one.
+            e.g. a screen recording of scrolling through the catalog.
+            Remove this block if not applicable.
+          -->
+          <img
+            class="project-gif"
+            src="demo.gif"
+            alt="music.amp.ooo demo"
+          >
+
+          <!-- OVERVIEW -->
+          <p class="section-label">overview</p>
+          <p class="project-text">
+            music. is a personal album ranking site hosted at
+            <a class="ext-link" href="https://music.amp.ooo" target="_blank" rel="noopener">music.amp.ooo</a>.
+            i came up with the original idea was as a new years resulution at the start of the year.
+            i wanted to listen to 3 albums a week, every week. to eventually hit the minimum goal of 156 albums by the end of the year
+            it originally started as an apple notes doc and eventually grew to be too long to manage.
+          </p>
+
+          <p class="project-text">
+            every month i update the website, pulling data from iTunes,
+            Discogs, Spotify, Soundcloud and Album of the Year. working around
+            api rate limits and inconsistent metadata across sources to produce
+            a clean, unified dataset.
+          </p>
+
+          <!--
+            STEP — add a screenshot of the site here.
+            e.g. the grid view or the /10 page.
+          -->
+          <img
+            class="project-photo"
+            src="screenshot1.jpg"
+            alt="music.amp.ooo grid view"
+          >
+
+          <!-- STACK -->
+          <p class="section-label">stack</p>
+          <ul class="stack-list">
+            <li>static html / css / js — no framework</li>
+            <li>google sheets csv as the backend data source</li>
+            <li>spotify oembed for cover art</li>
+            <li>itunes api + aoty scraping for metadata enrichment</li>
+          </ul>
+
+          <!-- FEATURES -->
+          <p class="section-label">features</p>
+          <ul class="feature-list">
+            <li>smart search across artist, album, and genre fields</li>
+            <li>genre filter ui with autofill</li>
+            <li>grid and list view toggle</li>
+            <li>mobile expand interactions</li>
+            <li>/10 page — a dedicated view for perfect albums</li>
+            <li>eventual 156-album personal listening log with full metadata</li>
+          </ul>
+
+          <!--
+            STEP — add a screenshot of the /10 page or list view here.
+          -->
+          <img
+            class="project-photo"
+            src="screenshot2.jpg"
+            alt="music.amp.ooo /10 page"
+          >
+
+          <!-- DESIGN -->
+          <p class="section-label">design</p>
+          <p class="project-text">
+            built on the amp.ooo design language as — Courier New,
+            four css variables, all lowercase. the palette shifts to a
+            dark purple to distinguish it from the main site while
+            staying within the same system.
+          </p>
+
+          <!-- CAROUSEL -->
+          <p class="section-label">screenshots</p>
+          <div class="carousel">
+            <div class="carousel-track-wrap">
+              <div class="carousel-track">
+                <!--
+                  STEP — replace these src paths with your screenshots.
+                  add or remove <img> tags to match your photo count.
+                  update the carousel-count span below to match.
+                -->
+                <img src="carousel/1.jpg" alt="screenshot 1">
+                <img src="carousel/2.jpg" alt="screenshot 2">
+                <img src="carousel/3.jpg" alt="screenshot 3">
+              </div>
+            </div>
+            <div class="carousel-controls">
+              <button class="carousel-btn prev">← prev</button>
+              <span class="carousel-count">1 / 3</span>
+              <button class="carousel-btn next">next →</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <footer>
+        <span>amp.ooo</span>
+        <span>2026</span>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.carousel').forEach(car => {
+      const track   = car.querySelector('.carousel-track');
+      const imgs    = track.querySelectorAll('img');
+      const count   = car.querySelector('.carousel-count');
+      const prevBtn = car.querySelector('.prev');
+      const nextBtn = car.querySelector('.next');
+      const total   = imgs.length;
+      let current   = 0;
+
+      function go(n) {
+        current = Math.max(0, Math.min(n, total - 1));
+        track.style.transform = `translateX(-${current * 100}%)`;
+        count.textContent = `${current + 1} / ${total}`;
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === total - 1;
+      }
+
+      prevBtn.addEventListener('click', () => go(current - 1));
+      nextBtn.addEventListener('click', () => go(current + 1));
+      go(0);
+    });
+  </script>
+
+</body>
+</html>
