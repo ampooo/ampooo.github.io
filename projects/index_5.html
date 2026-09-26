@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>projects — amp.ooo</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/style.css">
+  <meta name="description" content="projects — amp.ooo">
+  <meta name="theme-color" content="#f5f4f0">
+  <style>
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+      padding: 1rem 0 2rem;
+    }
+    .project-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1.25rem 0;
+      border-bottom: 0.5px solid var(--faint);
+      text-decoration: none;
+      gap: 1rem;
+      transition: opacity 0.15s;
+    }
+    .project-row:first-child { border-top: 0.5px solid var(--faint); }
+    .project-row:hover { opacity: 0.5; }
+    .row-left { display: flex; flex-direction: column; gap: 0.25rem; }
+    .row-id {
+      font-size: 11px;
+      color: var(--faint);
+      letter-spacing: 0.04em;
+    }
+    .row-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: var(--fg);
+      letter-spacing: -0.01em;
+    }
+    .row-title span {
+      font-weight: normal;
+      color: var(--muted);
+    }
+    .row-date {
+      font-size: 11px;
+      color: var(--faint);
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="topbar">
+    <div id="topbar-inner">
+      <a class="logo" href="/">amp.ooo</a>
+      <nav class="nav-links">
+        <a href="/projects/" class="active">projects</a>
+        <a href="/writing/">writing</a>
+        <a href="/about/">about</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <div class="inner">
+      <div class="project-list">
+
+        <!--
+          TO ADD A NEW PROJECT:
+          copy one .project-row block, update the href, id, title, label, and date.
+          new entries go above existing ones (newest first).
+        -->
+
+        <a class="project-row" href="/projects/ao-01/">
+          <div class="row-left">
+            <p class="row-id">[ ao - 01 ]</p>
+            <p class="row-title">music<span>.</span></p>
+          </div>
+          <p class="row-date">2026</p>
+        </a>
+
+      </div>
+
+      <footer>
+        <span>amp.ooo</span>
+        <span>2026</span>
+      </footer>
+    </div>
+  </main>
+
+</body>
+</html>
